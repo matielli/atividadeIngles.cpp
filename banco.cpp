@@ -4,17 +4,19 @@
 using namespace std;
 
 // Função de separação das notas por valor
-array<int, 4> contaNotas(int saque) {
-    array<int, 4> notasSeparadas;
-    notasSeparadas[0] = saque / 100;
-    saque %= 100;
-    notasSeparadas[1] = saque / 50;
-    saque %= 50;
-    notasSeparadas[2] = saque / 20;
-    saque %= 20;
-    notasSeparadas[3] = saque / 10;
-    saque %= 10;
-    notasSeparadas[4] = saque / 5;
+array<int, 5> contaNotas(int saque) {
+    array<int, 5> notasSeparadas;
+    
+    // Código para manter o valor do saque e contar notas de maneira mais "limpa"
+    // int aux
+    //aux = saque;
+    //ns[0] = aux / 100;
+    //aux %= 100
+    notasSeparadas[0] = (saque / 100);
+    notasSeparadas[1] = ((saque % 100)/50);
+    notasSeparadas[2] = (((saque % 100) % 50) / 20);
+    notasSeparadas[3] = ((((saque % 100) % 50) % 20) / 10);
+    notasSeparadas[4] = (((((saque % 100) % 50) % 20) % 10) / 5);
     return notasSeparadas;
 }
 
@@ -22,7 +24,7 @@ array<int, 4> contaNotas(int saque) {
 int main() {
     // Declara variáveis
     int saque;
-    array<int, 4> qtdNotas;
+    array<int, 5> qtdNotas;
 
     // Le valor a ser sacado do Caixa Eletrônico
     cout << "Digite o valor a ser sacado: ";
